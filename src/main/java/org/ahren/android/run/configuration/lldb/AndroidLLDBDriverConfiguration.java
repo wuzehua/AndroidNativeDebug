@@ -115,10 +115,10 @@ public class AndroidLLDBDriverConfiguration extends LLDBDriverConfiguration {
                     env.put("LD_LIBRARY_PATH", getLLDBLibDir().getAbsolutePath());
                 } else if (SystemInfo.isMac) {
                     env.put("DYLD_FRAMEWORK_PATH", lldbFrameworkFile.getParent());
-                    File pythonBinDir = CidrDebuggerPathManager.getOSXSystemPythonBinDir();
-                    if (pythonBinDir != null) {
-                        env.put("PATH", pythonBinDir.getAbsolutePath());
-                    }
+//                    File pythonBinDir = CidrDebuggerPathManager.getOSXSystemPythonBinDir();
+//                    if (pythonBinDir != null) {
+//                        env.put("PATH", pythonBinDir.getAbsolutePath());
+//                    }
                 }
 
                 if (!SystemInfo.isMac) {
@@ -220,7 +220,11 @@ public class AndroidLLDBDriverConfiguration extends LLDBDriverConfiguration {
 
         platformString = platformString + "-";
         if (CpuArch.CURRENT.width == 64) {
-            platformString = platformString + "x86_64";
+            if (CpuArch.CURRENT == CpuArch.ARM64) {
+                platformString = platformString + "arm64";
+            } else {
+                platformString = platformString + "x86_64";
+            }
         } else {
             if (!(CpuArch.CURRENT.width == 32)) {
                 return "UNKNOWN";

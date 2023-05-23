@@ -156,7 +156,7 @@ public class AndroidLLDBDriver extends LLDBDriver {
     }
 
     @Override
-    public @NotNull LLBreakpoint addBreakpoint(String path, int line, @Nullable String condition) throws ExecutionException, DebuggerCommandException {
+    public @NotNull AddBreakpointResult addBreakpoint(String path, int line, @Nullable String condition) throws ExecutionException, DebuggerCommandException {
         LOG.info("addBreakpoint,path="  + path);
         LOG.info("addBreakpoint,line="  + line);
         LOG.info("addBreakpoint,condition="  + condition);

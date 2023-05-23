@@ -1,7 +1,7 @@
 plugins {
     id 'java'
-    id 'org.jetbrains.intellij' version '1.2.1'
-    id 'org.jetbrains.kotlin.jvm' version '1.4.32'
+    id 'org.jetbrains.intellij' version '1.13.3'
+    id 'org.jetbrains.kotlin.jvm' version '1.8.20'
 }
 
 group plugin_group
@@ -21,20 +21,21 @@ dependencies {
 // See https://github.com/JetBrains/gradle-intellij-plugin/
 intellij {
     pluginName.set('AndroidNativeDebug')
-    version.set('CL-2021.2.3')
+    version.set('CL-2023.1')
     // intellijRepo.set('https://www.jetbrains.com/intellij-repository')
     downloadSources.set(false)
     instrumentCode.set(true)
-    plugins.set(['cidr-debugger-plugin', 'cidr-base-plugin', 'clion', 'cidr-clangFormat'])
+    plugins.set(['com.intellij.cidr.base', 'com.intellij.clion'])
 }
 
 patchPluginXml {
-    sinceBuild.set('212.0')
+    sinceBuild.set('231.8109')
+    untilBuild.set('232.*')
     changeNotes.set(provider {getChangeNote(projectDir)})
 }
 
 instrumentCode{
-    compilerVersion.set('212.5457.51')
+    compilerVersion.set('232.5150.115')
 }
 
 publishPlugin {

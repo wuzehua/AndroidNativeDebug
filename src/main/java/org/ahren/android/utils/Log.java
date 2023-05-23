@@ -15,6 +15,7 @@
 
 package org.ahren.android.utils;
 
+import com.intellij.openapi.diagnostic.LogLevel;
 import com.intellij.openapi.diagnostic.Logger;
 import org.apache.log4j.Level;
 
@@ -24,7 +25,7 @@ public class Log {
 
     public static Logger factory(String tag){
         Logger logger = Logger.getInstance(TAG + "." + tag);
-        logger.setLevel(DEBUG ? Level.ALL : Level.OFF);
+        logger.setLevel(DEBUG ? LogLevel.ALL : LogLevel.OFF);
         return logger;
     }
 }
